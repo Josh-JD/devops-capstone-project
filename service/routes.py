@@ -57,18 +57,27 @@ def create_accounts():
         jsonify(message), status.HTTP_201_CREATED, {"Location": location_url}
     )
 
-######################################################################
-# LIST ALL ACCOUNTS
-######################################################################
-
-# ... place you code here to LIST accounts ...
-
 
 ######################################################################
 # READ AN ACCOUNT
 ######################################################################
 
 # ... place you code here to READ an account ...
+@app.route("/accounts/<id>", methods=["GET"])
+def read_account(id):
+    app.logger.info("Request to read an Account with id: %s", id)
+    account = Account.find(id)
+    if not account:
+        abort(status.HTTP_404_NOT_FOUND)
+    data = account.serialize()
+    return data, status.HTTP_200_OK
+
+######################################################################
+# LIST ALL ACCOUNTS
+######################################################################
+
+# ... place you code here to LIST accounts ...
+
 
 
 ######################################################################
