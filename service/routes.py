@@ -77,9 +77,19 @@ def read_account(id):
 ######################################################################
 
 # ... place you code here to LIST accounts ...
+@app.route("/accounts", methods=["GET"])
+def list_accounts():
+    #Finding all the accounts
+    accounts = Account.all()
+    #Creating a list to store dictionaries of data from each account
+    res = []
+    #Go through each account and add them to list as dictionaries
+    for acc in accounts:
+        res.append(acc.serialize())
 
-
-
+    app.logger.info("Returning [%s} accounts back", len(res))
+    #We convert the list into json entries because that is waht test case is expecting back
+    return jsonify(res), status.HTTP_200_OK
 ######################################################################
 # UPDATE AN EXISTING ACCOUNT
 ######################################################################
