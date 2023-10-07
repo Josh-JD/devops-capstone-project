@@ -77,6 +77,8 @@ def read_account(id):
 ######################################################################
 
 # ... place you code here to LIST accounts ...
+
+
 @app.route("/accounts", methods=["GET"])
 def list_accounts():
     # Finding all the accounts
@@ -122,11 +124,11 @@ def update_account(id):
 def delete_account(id):
     account = Account.find(id)
 
-    if account:    
+    if account:
         account.delete()
     return "", status.HTTP_204_NO_CONTENT
 
-    
+
 ######################################################################
 #  U T I L I T Y   F U N C T I O N S
 ######################################################################
