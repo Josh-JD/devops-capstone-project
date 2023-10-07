@@ -110,7 +110,6 @@ def update_account(id):
     # Update the account on the database
     account.update()
     # Convert that data back into a dict and send 200 code
-    return account.serialize(), status.HTTP_200_OK
 
 
 
