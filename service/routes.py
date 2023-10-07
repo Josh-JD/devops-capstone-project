@@ -79,16 +79,16 @@ def read_account(id):
 # ... place you code here to LIST accounts ...
 @app.route("/accounts", methods=["GET"])
 def list_accounts():
-    #Finding all the accounts
+    # Finding all the accounts
     accounts = Account.all()
-    #Creating a list to store dictionaries of data from each account
+    # Creating a list to store dictionaries of data from each account
     res = []
-    #Go through each account and add them to list as dictionaries
+    # Go through each account and add them to list as dictionaries
     for acc in accounts:
         res.append(acc.serialize())
 
     app.logger.info("Returning [%s} accounts back", len(res))
-    #We convert the list into json entries because that is waht test case is expecting back
+    # We convert the list into json entries because that is waht test case is expecting back
     return jsonify(res), status.HTTP_200_OK
 ######################################################################
 # UPDATE AN EXISTING ACCOUNT
@@ -97,17 +97,17 @@ def list_accounts():
 # ... place you code here to UPDATE an account ...
 @app.route("/accounts/<id>", methods=["PUT"])
 def update_account(id):
-    #Find the account in the db by id
+    # Find the account in the db by id
     account = Account.find(id)
 
     if not account:
         abort(status.HTTP_404_NOT_FOUND)
 
-    #We deserialize data to convert from dict to data to store in db
+    # We deserialize data to convert from dict to data to store in db
     account.deserialize(request.get_json())
-    #Update the account on the database
+    # Update the account on the database
     account.update()
-    #Convert that data back into a dict and send 200 code
+    # Convert that data back into a dict and send 200 code
     return account.serialize(), status.HTTP_200_OK    
 
     
