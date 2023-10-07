@@ -95,6 +95,8 @@ def list_accounts():
 ######################################################################
 
 # ... place you code here to UPDATE an account ...
+
+
 @app.route("/accounts/<id>", methods=["PUT"])
 def update_account(id):
     # Find the account in the db by id
@@ -108,9 +110,8 @@ def update_account(id):
     # Update the account on the database
     account.update()
     # Convert that data back into a dict and send 200 code
-    return account.serialize(), status.HTTP_200_OK    
 
-    
+
 
 ######################################################################
 # DELETE AN ACCOUNT
