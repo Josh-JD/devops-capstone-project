@@ -62,7 +62,6 @@ def create_accounts():
 # READ AN ACCOUNT
 ######################################################################
 
-# ... place you code here to READ an account ...
 @app.route("/accounts/<id>", methods=["GET"])
 def read_account(id):
     app.logger.info("Request to read an Account with id: %s", id)
@@ -76,7 +75,6 @@ def read_account(id):
 # LIST ALL ACCOUNTS
 ######################################################################
 
-# ... place you code here to LIST accounts ...
 @app.route("/accounts", methods=["GET"])
 def list_accounts():
     # Finding all the accounts
@@ -94,7 +92,6 @@ def list_accounts():
 # UPDATE AN EXISTING ACCOUNT
 ######################################################################
 
-# ... place you code here to UPDATE an account ...
 @app.route("/accounts/<id>", methods=["PUT"])
 def update_account(id):
     # Find the account in the db by id
@@ -110,13 +107,12 @@ def update_account(id):
     # Convert that data back into a dict and send 200 code
     return account.serialize(), status.HTTP_200_OK    
 
-    
+
 
 ######################################################################
 # DELETE AN ACCOUNT
 ######################################################################
 
-# ... place you code here to DELETE an account ...
 @app.route("/accounts/<id>", methods=["DELETE"])
 def delete_account(id):
     account = Account.find(id)
